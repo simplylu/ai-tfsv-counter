@@ -3,7 +3,7 @@ body {
     padding: 0;
     background-color: #111;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #main-content {
@@ -93,21 +93,61 @@ footer {
     color: #888;
     text-align: center;
     padding: 15px;
-    padding-right: 70px;
+    padding-left: 450px;
     border-top: 2px solid #222;
     position: relative;
+    overflow: visible;
+    z-index: 10;
 }
 
 footer p {
     margin: 0;
     font-size: 0.9em;
+    text-align: right;
+}
+
+.source-toggles {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 11;
+    align-items: center;
+}
+
+.rate-display {
+    color: #888;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.source-toggle {
+    background-color: #333;
+    border: 2px solid #555;
+    border-radius: 5px;
+    padding: 8px 16px;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.source-toggle.active {
+    background-color: #ff0000aa;
+    border-color: #ff0000aa;
+    color: white;
+}
+
+.source-toggle:active {
+    transform: scale(0.95);
 }
 
 .sound-toggle {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: #333;
     border: 2px solid #555;
     border-radius: 50%;
@@ -119,6 +159,7 @@ footer p {
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
+    flex-shrink: 0;
 }
 
 .sound-toggle:hover {
@@ -127,7 +168,7 @@ footer p {
 }
 
 .sound-toggle:active {
-    transform: translateY(-50%) scale(0.95);
+    transform: scale(0.95);
 }
 
 .consent-overlay {
@@ -182,21 +223,13 @@ footer p {
 }
 
 .btn-yes {
-    background-color: #4a9eff;
+    background-color: red;
     color: white;
-}
-
-.btn-yes:hover {
-    background-color: #3a8eef;
 }
 
 .btn-no {
     background-color: #555;
     color: white;
-}
-
-.btn-no:hover {
-    background-color: #666;
 }
 
 .blurred {

@@ -43,26 +43,28 @@
         .back-link {
             margin: 20px;
             padding: 12px 30px;
-            background-color: #4a9eff;
+            background-color: red;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-family: Arial, sans-serif;
             font-weight: bold;
         }
-        
-        .back-link:hover {
-            background-color: #3a8eef;
-        }
     </style>
 </head>
 <body>
     <h1>🐱 Enjoy Some Cats Instead! 🐱</h1>
     <div class="cat-container">
-        <img class="cat-image" src="https://cataas.com/cat?width=800&height=600&1" alt="Random Cat 1">
-        <img class="cat-image" src="https://cataas.com/cat?width=800&height=600&2" alt="Random Cat 2">
-        <img class="cat-image" src="https://cataas.com/cat?width=800&height=600&3" alt="Random Cat 3">
-        <img class="cat-image" src="https://cataas.com/cat?width=800&height=600&4" alt="Random Cat 4">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1600px;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&1" alt="Random Cat 1" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&2" alt="Random Cat 2" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&3" alt="Random Cat 3" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&4" alt="Random Cat 4" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&5" alt="Random Cat 5" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&6" alt="Random Cat 6" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&7" alt="Random Cat 7" style="max-width: 100%;">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&8" alt="Random Cat 8" style="max-width: 100%;">
+        </div>
     </div>
     <a href="index.html" class="back-link">Go Back</a>
 </body>

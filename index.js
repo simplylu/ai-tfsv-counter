@@ -8,16 +8,37 @@ let soundEnabled = false;
 const counterElement = document.getElementById('counter');
 const countsPerHourX = 6700; // Count on X
 const countsPerHourTop5 = 79; // Count on other top 5 platforms for porn content creation
-const countsPerHour = countsPerHourX + countsPerHourTop5; // Total counts per hour
-const intervalMs = 3600000 / countsPerHour;
+const estimatedCountsForOSModels = 999 // Estimated counts for open source models
+
+// Toggle states for different sources
+let xEnabled = true;
+let platformsEnabled = true;
+let osModelsEnabled = true;
+
+// Calculate counts per hour based on enabled toggles
+function getCountsPerHour() {
+    let total = 0;
+    if (xEnabled) total += countsPerHourX;
+    if (platformsEnabled) total += countsPerHourTop5;
+    if (osModelsEnabled) total += estimatedCountsForOSModels;
+    return total || 1; // Prevent division by zero
+}
+
+let countsPerHour = getCountsPerHour();
+let intervalMs = 3600000 / countsPerHour;
+let counterInterval = null;
 
 let currentCount = 0;
 
 // Calculate initial count based on time elapsed since start timestamp
-const now = Math.floor(Date.now() / 1000); // current timestamp in seconds
-const elapsedSeconds = now - startTimestamp;
-const elapsedHours = elapsedSeconds / 3600;
-const targetCount = Math.floor(elapsedHours * countsPerHour);
+function getTargetCount() {
+    const now = Math.floor(Date.now() / 1000);
+    const elapsedSeconds = now - startTimestamp;
+    const elapsedHours = elapsedSeconds / 3600;
+    return Math.floor(elapsedHours * getCountsPerHour());
+}
+
+let targetCount = getTargetCount();
 
 // Update counter display
 function updateDisplay() {
@@ -70,7 +91,7 @@ function animateCounter() {
                 setTimeout(animateCounter, smallStepDuration);
             } else {
                 // Animation complete, start normal counting
-                setInterval(incrementCounter, intervalMs);
+                counterInterval = setInterval(incrementCounter, intervalMs);
             }
         }
     }
@@ -90,6 +111,8 @@ consentYes.addEventListener('click', () => {
     mainContent.classList.remove('blurred');
     // Start animation after consent
     animateCounter();
+    // Initialize rate display
+    updateRateDisplay();
 });
 
 consentNo.addEventListener('click', () => {
@@ -104,4 +127,47 @@ soundToggle.addEventListener('click', () => {
     soundEnabled = !soundEnabled;
     soundIcon.textContent = soundEnabled ? '🔊' : '🔇';
     soundToggle.setAttribute('aria-label', soundEnabled ? 'Mute sound' : 'Unmute sound');
+});
+
+// Source toggle buttons
+const xToggle = document.getElementById('x-toggle');
+const platformsToggle = document.getElementById('platforms-toggle');
+const osModelsToggle = document.getElementById('os-models-toggle');
+const rateDisplay = document.getElementById('rate-display');
+
+function updateRateDisplay() {
+    const perHour = getCountsPerHour();
+    const perSecond = (perHour / 3600).toFixed(2);
+    rateDisplay.textContent = `${perHour} images per hour / ${perSecond} images per second`;
+}
+
+function updateCounterRate() {
+    countsPerHour = getCountsPerHour();
+    intervalMs = 3600000 / countsPerHour;
+    
+    // Clear existing interval and restart with new rate
+    if (counterInterval) {
+        clearInterval(counterInterval);
+        counterInterval = setInterval(incrementCounter, intervalMs);
+    }
+    
+    updateRateDisplay();
+}
+
+xToggle.addEventListener('click', () => {
+    xEnabled = !xEnabled;
+    xToggle.classList.toggle('active');
+    updateCounterRate();
+});
+
+platformsToggle.addEventListener('click', () => {
+    platformsEnabled = !platformsEnabled;
+    platformsToggle.classList.toggle('active');
+    updateCounterRate();
+});
+
+osModelsToggle.addEventListener('click', () => {
+    osModelsEnabled = !osModelsEnabled;
+    osModelsToggle.classList.toggle('active');
+    updateCounterRate();
 });
