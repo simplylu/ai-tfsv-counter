@@ -13,7 +13,7 @@ let currentCount = 0;
 const now = Math.floor(Date.now() / 1000); // current timestamp in seconds
 const elapsedSeconds = now - startTimestamp;
 const elapsedHours = elapsedSeconds / 3600;
-currentCount = Math.floor(elapsedHours * countsPerHour);
+const targetCount = Math.floor(elapsedHours * countsPerHour);
 
 // Update counter display
 function updateDisplay() {
@@ -26,11 +26,48 @@ function incrementCounter() {
     updateDisplay();
 }
 
-// Initial display
-updateDisplay();
+// Animate from 0 to current count over 10 seconds in 10k steps
+const animationDuration = 5000; // 10 seconds
+const largeStepSize = 20000;
+const smallStepSize = 10;
+const slowDownThreshold = 1000;
 
-// Start counting
-setInterval(incrementCounter, intervalMs);
+// Calculate timing for large steps (first 9 seconds)
+const countToSlowDown = Math.max(0, targetCount - slowDownThreshold);
+const numberOfLargeSteps = Math.ceil(countToSlowDown / largeStepSize);
+const largeStepDuration = numberOfLargeSteps > 0 ? (9000 / numberOfLargeSteps) : 0;
+
+// Calculate timing for small steps (last 1 second)
+const remainingCount = Math.min(slowDownThreshold, targetCount);
+const numberOfSmallSteps = Math.ceil(remainingCount / smallStepSize);
+const smallStepDuration = numberOfSmallSteps > 0 ? (1000 / numberOfSmallSteps) : 0;
+
+function animateCounter() {
+    if (currentCount < targetCount) {
+        const remaining = targetCount - currentCount;
+        
+        if (remaining > slowDownThreshold) {
+            // Use large steps
+            currentCount = Math.min(currentCount + largeStepSize, targetCount - slowDownThreshold);
+            updateDisplay();
+            setTimeout(animateCounter, largeStepDuration);
+        } else {
+            // Use small steps for final approach
+            currentCount = Math.min(currentCount + smallStepSize, targetCount);
+            updateDisplay();
+            
+            if (currentCount < targetCount) {
+                setTimeout(animateCounter, smallStepDuration);
+            } else {
+                // Animation complete, start normal counting
+                setInterval(incrementCounter, intervalMs);
+            }
+        }
+    }
+}
+
+// Initial display (will show 0)
+updateDisplay();
 
 // Consent popup handling
 const consentOverlay = document.getElementById('consent-overlay');
@@ -41,6 +78,8 @@ const consentNo = document.getElementById('consent-no');
 consentYes.addEventListener('click', () => {
     consentOverlay.classList.add('hidden');
     mainContent.classList.remove('blurred');
+    // Start animation after consent
+    animateCounter();
 });
 
 consentNo.addEventListener('click', () => {
