@@ -171,3 +171,13 @@ osModelsToggle.addEventListener('click', () => {
     osModelsToggle.classList.toggle('active');
     updateCounterRate();
 });
+
+// Escape key handler
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('Escape pressed, navigating to cat.html');
+        window.location.assign('cat.html');
+    }
+}, true); // Use capture phase to ensure it fires even with overlay
