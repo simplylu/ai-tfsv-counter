@@ -1,6 +1,10 @@
 // Start from Linux timestamp 1765753200
 const startTimestamp = 1766617200; // in seconds
 
+// Audio setup
+const audio = new Audio('beep.wav');
+let soundEnabled = false;
+
 const counterElement = document.getElementById('counter');
 const countsPerHourX = 6700; // Count on X
 const countsPerHourTop5 = 79; // Count on other top 5 platforms for porn content creation
@@ -18,6 +22,12 @@ const targetCount = Math.floor(elapsedHours * countsPerHour);
 // Update counter display
 function updateDisplay() {
     counterElement.textContent = currentCount.toLocaleString();
+    
+    // Play sound if enabled
+    if (soundEnabled && currentCount > 0) {
+        audio.currentTime = 0; // Reset to start
+        audio.play().catch(e => console.log('Audio play failed:', e));
+    }
 }
 
 // Increment counter
@@ -84,4 +94,14 @@ consentYes.addEventListener('click', () => {
 
 consentNo.addEventListener('click', () => {
     window.location.href = 'cat.html';
+});
+
+// Sound toggle button
+const soundToggle = document.getElementById('sound-toggle');
+const soundIcon = document.getElementById('sound-icon');
+
+soundToggle.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    soundIcon.textContent = soundEnabled ? '🔊' : '🔇';
+    soundToggle.setAttribute('aria-label', soundEnabled ? 'Mute sound' : 'Unmute sound');
 });
