@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    flex: 1;
+    width: 100vw;
+    gap: 2px;
+}
+
+.quote-cell {
+    background-color: #111;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    color: #ccc;
+}
+
+.quote-cell blockquote {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    font-style: italic;
+    color: #fff;
+}
+
+.quote-cell cite {
+    display: block;
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.quote-cell a {
+    margin-top: 10px;
+    /* color: #4a9eff; */
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.quote-cell a:hover {
+    text-decoration: underline;
+}
+
+#counter-cell {
+    color: red;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+}
+
+#counter {
+    color: red;
+    font-size: 8vw;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+#counter-subtitle {
+    color: #888;
+    font-size: 1.2em;
+    font-weight: normal;
+    margin: 10px 0 0 0;
+}
+
+b {
+    color: red;
+}
+
+footer {
+    background-color: #000;
+    color: #888;
+    text-align: center;
+    padding: 15px;
+    border-top: 2px solid #222;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.consent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.consent-popup {
+    background-color: #222;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+}
+
+.consent-popup h2 {
+    color: red;
+    margin-top: 0;
+    font-size: 2em;
+}
+
+.consent-popup p {
+    color: #ccc;
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.consent-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-yes {
+    background-color: #4a9eff;
+    color: white;
+}
+
+.btn-yes:hover {
+    background-color: #3a8eef;
+}
+
+.btn-no {
+    background-color: #555;
+    color: white;
+}
+
+.btn-no:hover {
+    background-color: #666;
+}
+
+.blurred {
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.consent-overlay.hidden {
+    display: none;
+}
+
+a {
+    color: white !important;
+}
