@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="mobile.js" defer></script>
+    <title>AI TFSV Counter - Mobile</title>
+</head>
+
+<body>
+    <div id="consent-overlay" class="consent-overlay">
+        <div class="consent-popup">
+            <h2>Content Warning</h2>
+            <p>This page contains information about sensitive topics. Do you wish to continue?</p>
+            <div class="consent-buttons">
+                <button id="consent-yes" class="btn btn-yes">I Understand</button>
+                <button id="consent-no" class="btn btn-no">No, Take Me Away</button>
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="blurred">
+        <!-- Footer buttons at the top -->
+        <div class="controls-section">
+            <div class="source-toggles">
+                <button id="sound-toggle" class="sound-toggle" aria-label="Unmute sound">
+                    <span id="sound-icon">🔇</span>
+                </button>
+                <button id="x-toggle" class="source-toggle active" title="X (Grok)">X</button>
+                <button id="platforms-toggle" class="source-toggle active" title="Other Platforms">Platforms</button>
+                <button id="os-models-toggle" class="source-toggle active" title="OS Models">OS Models</button>
+            </div>
+            <div id="rate-display" class="rate-display"></div>
+        </div>
+
+        <!-- Counter -->
+        <div id="counter-cell">
+            <div id="counter">0</div>
+            <p id="counter-subtitle">Assumed number of AI-generated nonconsensual pornographic images created via X,
+                some OS models and the top 5 AI porn generation platforms since December 25, 2025 <span
+                    style="color: #00ff00;">*</span></p>
+        </div>
+
+        <!-- Quotes -->
+        <div class="quotes-container">
+            <div class="quote-cell">
+                <blockquote>"If you don't publicly request Grok to generate an image, <b>the AI will continue to do
+                        so</b>. This can be done, for example, via a button in X or via your own website. Both work
+                    without having to take out a paid subscription."</blockquote>
+                <cite>~ Heise</cite>
+                <a href="https://www.heise.de/news/Skandal-um-sexualisierte-Deepfakes-Grok-verweigert-Bildgenerierung-weitgehend-11135470.html"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"During a 24-hour analysis of images the @Grok account posted to X, the chatbot generated
+                    about <b>6,700 every hour</b> that were identified as sexually suggestive or nudifying, according to
+                    Genevieve Oh, a social media and deepfake researcher."</blockquote>
+                <cite>~ Bloomberg</cite>
+                <a href="https://www.bloomberg.com/news/articles/2026-01-07/musk-s-grok-ai-generated-thousands-of-undressed-images-per-hour-on-x"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"Services for AI pornography aim to neutralise these [technical] barriers by making
+                    generation fast and intuitive. Users do not have to download or run programs; they simply <b>type or
+                        select what they want to see</b>, and the service […] provides the images."</blockquote>
+                <cite>~ Internet Watch Foundation</cite>
+                <a href="https://www.iwf.org.uk/media/nadlcb1z/iwf-ai-csam-report_update-public-jul24v13.pdf"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"The rise of AI-generated imagery has taken that harassment to hideous new heights. This
+                    isn't just porn, it's terrorism; it's meant to <b>punish and silence women</b>."</blockquote>
+                <cite>~ The Guardian</cite>
+                <a href="https://www.theguardian.com/commentisfree/2023/apr/01/ai-deepfake-porn-fake-images"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"[…] when abusive pornographic deepfakes cause a victim to <b>lose her job or access to her
+                        children</b>, when online abuse of a young woman results in offline <b>slut-shaming and she
+                        drops out of school</b>" – these are just some examples that show how easily and dangerously
+                    digital abuse spills into real life."</blockquote>
+                <cite>~ Laura Bates via UNWomen</cite>
+                <a href="https://www.unwomen.org/en/articles/faqs/ai-powered-online-abuse-how-ai-is-amplifying-violence-against-women-and-what-can-stop-it"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"[…] with <b>15 million downloads since 2022</b>, and deepfaked nude content increasingly
+                    used to bully victims and expose them to danger, it's not a problem that society can or should
+                    ignore."</blockquote>
+                <cite>~ Forbes</cite>
+                <a href="https://www.forbes.com/sites/bernardmarr/2025/07/28/ai-apps-are-undressing-women-without-consent-and-its-a-problem/"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"Sensity AI, a research company that has tracked online deepfake videos since December of
+                    2018, has consistently found that between 90% and 95% of them are nonconsensual porn. About <b>90%
+                        of that is nonconsensual porn of women.</b>"</blockquote>
+                <cite>~ MIT Technology Review</cite>
+                <a href="https://www.technologyreview.com/2021/02/12/1018222/deepfake-revenge-porn-coming-ban/"
+                    target="_blank">🔗 Open Source</a>
+            </div>
+            <div class="quote-cell">
+                <blockquote>"Researchers[…] have uncovered a dramatic rise in easily accessible AI tools specifically
+                    designed to create deepfake images of identifiable people, finding nearly <b>35,000 such tools
+                        available for public download</b> on one popular globally accessible online platform, for
+                    example."</blockquote>
+                <cite>~ EurekAlert!</cite>
+                <a href="https://www.eurekalert.org/news-releases/1082968" target="_blank">🔗 Open Source</a>
+            </div>
+        </div>
+        <!-- Sources information -->
+        <div class="sources-section">
+            <p><span style="color: #00ff00;">*</span> Images per hour: <b>6700</b> via X, <b>79</b> via top 5 AI porn
+                generation
+                platforms (<a
+                    href="https://www.bloomberg.com/news/articles/2026-01-07/musk-s-grok-ai-generated-thousands-of-undressed-images-per-hour-on-x"
+                    target="_blank">Source</a>) and ~<b>999</b> via Open Source Models (<a
+                    href="https://github.com/simplylu/puddle/#explanation-of-key-metrics">Source</a>)</p>
+            <p>Sound Effect by <a
+                    href="https://pixabay.com/de/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=86247">freesound_community</a>
+                from <a
+                    href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=86247">Pixabay</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
