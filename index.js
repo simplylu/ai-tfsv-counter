@@ -129,6 +129,12 @@ soundToggle.addEventListener('click', () => {
     soundToggle.setAttribute('aria-label', soundEnabled ? 'Mute sound' : 'Unmute sound');
 });
 
+const catToggle = document.getElementById('cat-mode');
+
+catToggle.addEventListener('click', () => {
+    window.location.href = 'cat.html';
+});
+
 // Source toggle buttons
 const xToggle = document.getElementById('x-toggle');
 const platformsToggle = document.getElementById('platforms-toggle');

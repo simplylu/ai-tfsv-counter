@@ -147,7 +147,7 @@ footer p {
     transform: scale(0.95);
 }
 
-.sound-toggle {
+.sound-toggle, .cat-mode {
     background-color: #333;
     border: 2px solid #555;
     border-radius: 50%;
@@ -162,12 +162,12 @@ footer p {
     flex-shrink: 0;
 }
 
-.sound-toggle:hover {
+.sound-toggle:hover, .cat-mode:hover {
     background-color: #444;
     border-color: #666;
 }
 
-.sound-toggle:active {
+.sound-toggle:active, .cat-mode:active {
     transform: scale(0.95);
 }
 
