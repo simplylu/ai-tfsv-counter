@@ -15,6 +15,25 @@ let xEnabled = true;
 let platformsEnabled = true;
 let osModelsEnabled = true;
 
+// Process URL hash to set initial toggle states
+function processUrlHash() {
+    const hash = window.location.hash.substring(1).toUpperCase();
+    if (hash === 'X') {
+        xEnabled = true;
+        platformsEnabled = false;
+        osModelsEnabled = false;
+    } else if (hash === 'OS') {
+        xEnabled = false;
+        platformsEnabled = false;
+        osModelsEnabled = true;
+    } else if (hash === 'OTHER') {
+        xEnabled = false;
+        platformsEnabled = true;
+        osModelsEnabled = false;
+    }
+    // If no hash or unrecognized hash, keep all enabled (default)
+}
+
 // Calculate counts per hour based on enabled toggles
 function getCountsPerHour() {
     let total = 0;
@@ -23,6 +42,9 @@ function getCountsPerHour() {
     if (osModelsEnabled) total += estimatedCountsForOSModels;
     return total || 1; // Prevent division by zero
 }
+
+// Apply hash settings on page load BEFORE calculating values
+processUrlHash();
 
 let countsPerHour = getCountsPerHour();
 let intervalMs = 3600000 / countsPerHour;
@@ -109,6 +131,10 @@ const consentNo = document.getElementById('consent-no');
 consentYes.addEventListener('click', () => {
     consentOverlay.classList.add('hidden');
     mainContent.classList.remove('blurred');
+    // Update button visual states based on hash settings
+    xToggle.classList.toggle('active', xEnabled);
+    platformsToggle.classList.toggle('active', platformsEnabled);
+    osModelsToggle.classList.toggle('active', osModelsEnabled);
     // Start animation after consent
     animateCounter();
     // Initialize rate display
