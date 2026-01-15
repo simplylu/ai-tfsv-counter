@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats! - Mobile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        h1 {
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 20px 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .cat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .cat-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .cat-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        .back-link {
+            margin: 20px;
+            padding: 14px 35px;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .back-link:active {
+            transform: scale(0.95);
+        }
+        
+        /* For slightly wider screens (tablets) */
+        @media (min-width: 600px) {
+            .cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🐱 Enjoy Some Cats Instead! 🐱</h1>
+    <div class="cat-container">
+        <div class="cat-grid">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&1" alt="Random Cat 1">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&2" alt="Random Cat 2">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&3" alt="Random Cat 3">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&4" alt="Random Cat 4">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&5" alt="Random Cat 5">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&6" alt="Random Cat 6">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&7" alt="Random Cat 7">
+            <img class="cat-image" src="https://cataas.com/cat?width=400&height=300&8" alt="Random Cat 8">
+        </div>
+    </div>
+    <a href="mobile.html" class="back-link">Go Back</a>
+</body>
+</html>

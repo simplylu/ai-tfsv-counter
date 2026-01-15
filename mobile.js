@@ -116,7 +116,7 @@ consentYes.addEventListener('click', () => {
 });
 
 consentNo.addEventListener('click', () => {
-    window.location.href = 'cat.html';
+    window.location.href = 'cat-mobile.html';
 });
 
 // Sound toggle button
@@ -132,7 +132,7 @@ soundToggle.addEventListener('click', () => {
 const catToggle = document.getElementById('cat-mode');
 
 catToggle.addEventListener('click', () => {
-    window.location.href = 'cat.html';
+    window.location.href = 'cat-mobile.html';
 });
 
 // Source toggle buttons
@@ -183,7 +183,7 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' || event.key === 'Esc') {
         event.preventDefault();
         event.stopPropagation();
-        console.log('Escape pressed, navigating to cat.html');
-        window.location.assign('cat.html');
+        console.log('Escape pressed, navigating to cat-mobile.html');
+        window.location.assign('cat-mobile.html');
     }
 }, true); // Use capture phase to ensure it fires even with overlay
